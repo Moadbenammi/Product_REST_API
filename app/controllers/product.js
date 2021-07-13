@@ -40,7 +40,7 @@ exports.deleteProduct = (req, res, next) => {
         .then(() => res.status(200).json({ message: "Product was deleted !" }))
         .catch((error) => res.status(400).json({ error }));
     })
-    .catch(() => res.status(500).json({ error: "Product not found!" }));
+    .catch(() => res.status(404).json({ error: "Product not found!" }));
 };
 
 exports.getOneProduct = (req, res, next) => {

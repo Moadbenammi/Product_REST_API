@@ -1,12 +1,15 @@
-//requiring modules
+//require modules
 const express = require("express");
+const swaggerUI = require("swagger-ui-express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { PORT, MONGO_URI } = require("./app/config/config");
-const postRoutes = require("./app/routes/product");
+const {swaggerAPIDesc} = require("./apiDocumentation");
+const productRoutes = require("./app/routes/product");
 const userRoutes = require("./app/routes/user"); 
 
 
+//Create express app :
 const app = express();
 
 
@@ -25,13 +28,11 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 //Use routes :
 app.use("/auth", userRoutes);
-app.use("/products", postRoutes);
-app.get("/", (req, res) => {
-  res.send("<h1> Welcome to the REST API</h1> ");
-})
+app.use("/products", productRoutes);
+app.use("/", swaggerUI.serve, swaggerUI.setup(swaggerAPIDesc));
 
 
-//Connection to MongoDB
+//Connection to MongoDB :
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>

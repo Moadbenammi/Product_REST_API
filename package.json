@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start" : "node server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Moad BENAMMI & Hassan HARROUNI ALAOUI",
@@ -16,6 +16,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.18",
     "mongoose-unique-validator": "^2.0.3",
-    "multer": "^1.4.2"
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }
